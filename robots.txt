@@ -1,0 +1,11 @@
+# r-datacollection.com robots.txt -- crawl what you want, but stay friendly.
+
+User-agent: *
+Crawl-delay: 2
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: cathaters
+Disallow: /

@@ -1,0 +1,15 @@
+---
+output: html_document
+---
+# Errata for 'Automated Data Collection with R'
+
+
+Last update: `r Sys.time()`
+
+
+### page 35
+
+1. page 35 (typo). Change "parsed_doc" to "parsed_fortunes$children". <br> Credit: Jüri Kuusik (2015-01-22)
+
+### page 136
+

@@ -1,0 +1,56 @@
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:300,400);
+
+body{
+  margin:10;
+  padding:10;
+  font-family:"Alegreya Sans";
+  max-width:800px;
+  text-align:left;
+}
+
+p{
+font-family:"Alegreya Sans";
+font-weight:200;
+}
+
+h1{
+margin:0;
+padding:1em 0 .5em;
+font-size:6em;
+font-weight:200;
+text-align:center;
+}
+
+h2{
+margin:0;
+font-size:3em;
+font-weight:200;
+text-align:left;
+}
+  
+span{
+display:block;
+font-size:1em;
+font-weight:300;
+color:#222;
+}
+    
+button{
+display:inline-block;
+margin:0 0 2em;
+padding:.5em 1em;
+font-size:1.5em;
+color:#fff;
+font-weight:300;
+background:none;
+border:#fff 3px solid;
+border-radius:3px;
+appearance:none;
+transition:all .25s;
+&:hover{
+background:#fff;
+color:#111;
+}
+
+
+  

@@ -1,0 +1,44 @@
+# name: Your New Jekyll Site
+# markdown: redcarpet
+# pygments: true
+
+
+# Dependencies
+markdown: redcarpet
+highlighter: true
+
+# author:
+#   name:           Mark Otto
+#   url:            https://twitter.com/mdo
+
+
+
+# # Setup
+# title:            Poolesss
+# tagline:          The Jekyll Butler
+# description:      Base theme for Jekyll themes by @mdo.
+# url:              http://getpoole.com
+
+
+
+# # Permalinks
+permalink: /blog/:title
+
+paginate: 7000
+paginate_path: "blog/page:num"
+
+# Custom vars
+# version:          1.0.0
+
+
+# port:		  4000
+
+# gems: [jekyll-sass]
+
+
+name: Automated Data Collection with R Blog
+description: A blog about all things data collection with R
+url: http://r-datacollection.com/blog
+
+
+exclude: [/materials/README.md, /materials/zip_materials.sh, /errata/*.md, /errata/*.rmd, /errata/*_example.*, /errata/cache]

@@ -1,0 +1,7 @@
+base
+httr
+stringr
+bitops
+RCurl
+XML
+rvest

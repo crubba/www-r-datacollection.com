@@ -1,0 +1,103 @@
+---
+layout: blog-layout
+title: "htmltab v.0.6.0"
+author: "Christian Rubba"
+authorref: "https://twitter.com/christianrubba"
+date: 2015-07-23 7:50:20
+teaser-pic: "/img/blog/carpenter.png"
+category: rstats
+blogo: "main"
+---
+
+The next version of the *htmltab* package has just been released on [CRAN](http://cran.r-project.org/web/packages/htmltab/) and [GitHub](https://github.com/crubba/htmltable). The goal behind htmltab is to make the collection of structured information from HTML tables as easy and painless as possible (read about the package [here](http://www.r-datacollection.com/blog/htmltab-Next-version-and-CRAN-release/) and [here](http://www.r-datacollection.com/blog/Hassle-free-data-from-HTML-tables-with-the-htmltable-package/)). The most recent update got rid of many smaller bug fixes, inconsistencies and brings significant internal optimization of the code to increase not only the robustness of the function but also the level of verbosity in case something goes wrong. A complete list of the changes can be checked up [here](http://cran.r-project.org/web/packages/htmltab/NEWS).
+
+```r
+install.packages("htmltab")
+#or
+devtools::install_github("crubba/htmltab")
+```
+
+## Header information that appear in the body
+With v.0.6.0 a new features has been introduced that will allow users to process header information that appear somewhere in the table body. This is not an uncommon design choice and the question how such tables can be processed with R has been debated on [stackoverflow](http://stackoverflow.com/questions/27592575/dropped-rows-using-readhtmltable-in-r). I illustrate this problem with a table from the [American National Weather Service](http://nomads.ncep.noaa.gov/). Below is a crop of this table which should give you the basic idea:
+
+<img class="intext-img" src="/img/blog/noaa.png">
+
+The task is to assemble a table where the the model type information that appear in the body (global models, regional models, ...) populate a seperate column in the final table. To this end, `htmltab`() has been extended to accept in its _header_ argument a formula-like expression to signify the different dimensions of header information. The basic format of this formula interface is level1 + level2 + level3 + ... , where you can express the position of each element either numerically or with a character vector for an XPath expression that identifies the respective element. So, for the table above, we pass 1 + "//tr/td[@colspan = '7']" which expresses that the first level header appears in row 1 and the second level headers appear in cells which have a colspan attribute of 7:
+
+
+```r
+nomads <- htmltab(doc = "http://christianrubba.com/htmltab/ex/nomads.html", which = 1, header = 1 + "//tr/td[@colspan = '7']")
+```
+
+```
+## Warning: The code for the HTML table you provided contains invalid table tags ('//trbody'). The following transformations were applied:
+## 
+##               //trbody -> //tbody 
+## 
+## If you specified an XPath that makes a reference to this tag, this may have caused problems with their identification.
+```
+
+```
+## Warning: The code for the HTML table you provided is malformed. Not all
+## cells are nested in row tags (<tr>). htmltab tried to normalize the table
+## and ensure that all cells are within row tags. If you specified an XPath
+## for body or header elements, this may have caused problems with their
+## identification.
+```
+
+```r
+head(nomads, 22)
+```
+
+```
+##           Header_1                                     Data Set     freq
+## 3    Global Models                                         GDAS  6 hours
+## 4    Global Models                              GFS 0.25 Degree  6 hours
+## 5    Global Models            GFS 0.25 Degree (Secondary Parms)  6 hours
+## 6    Global Models                              GFS 0.50 Degree  6 hours
+## 7    Global Models                              GFS 1.00 Degree  6 hours
+## 8    Global Models                 GFS Ensemble high resolution  6 hours
+## 9    Global Models           GFS Ensemble Precip Bias-Corrected    daily
+## 10   Global Models  GFS Ensemble high-resolution Bias-Corrected  6 hours
+## 11   Global Models  GFS Ensemble NDGD resolution Bias-Corrected  6 hours
+## 12   Global Models         NAEFS high resolution Bias-Corrected  6 hours
+## 13   Global Models         NAEFS NDGD resolution Bias-Corrected  6 hours
+## 14   Global Models                             NGAC 2D Products    daily
+## 15   Global Models                             NGAC 3D Products    daily
+## 16   Global Models          NGAC Aerosol Optical Depth Products    daily
+## 17   Global Models        Climate Forecast System Flux Products  6 hours
+## 18   Global Models Climate Forecast System 3D Pressure Products  6 hours
+## 20 Regional Models                            AQM Daily Maximum 06Z, 12Z
+## 21 Regional Models                     AQM Hourly Surface Ozone 06Z, 12Z
+## 22 Regional Models                                 HIRES Alaska    daily
+## 23 Regional Models                                  HIRES CONUS 12 hours
+## 24 Regional Models                                   HIRES Guam 12 hours
+## 25 Regional Models                                 HIRES Hawaii 12 hours
+##    grib filter http     gds-alt
+## 3  grib filter http OpenDAP-alt
+## 4  grib filter http OpenDAP-alt
+## 5  grib filter http        <NA>
+## 6  grib filter http OpenDAP-alt
+## 7  grib filter http OpenDAP-alt
+## 8  grib filter http OpenDAP-alt
+## 9  grib filter http OpenDAP-alt
+## 10 grib filter http OpenDAP-alt
+## 11 grib filter http OpenDAP-alt
+## 12 grib filter http OpenDAP-alt
+## 13 grib filter http OpenDAP-alt
+## 14 grib filter http           -
+## 15 grib filter http           -
+## 16 grib filter http           -
+## 17 grib filter http           -
+## 18 grib filter http           -
+## 20 grib filter http OpenDAP-alt
+## 21 grib filter http OpenDAP-alt
+## 22 grib filter http OpenDAP-alt
+## 23 grib filter http OpenDAP-alt
+## 24 grib filter http OpenDAP-alt
+## 25 grib filter http OpenDAP-alt
+```
+
+In the data frame that was produced, we see that the model labels that appeared throughout the body now populate a seperate column. Such a format is almost always more useful for further exploration of the data frame either through summary statistics or visualizations. More generally, there is no limit with respect to the level of nestedness that the table exhibits. The only requirement for this feature to work is that the header levels must be strictly nested and you can specify the exact position of the elements through a numeric vector or an XPath.
+
+For more information have a look at the [package vignette](https://cran.r-project.org/web/packages/htmltab/vignettes/htmltab.html). And as always, I am happy to [hear](https://github.com/crubba/htmltab/issues) about any problems you experience with the package.

@@ -1,0 +1,139 @@
+
+/**********************************
+ALL
+***********************************/
+
+body {
+  background-color: rgba(248, 249, 250, 1);
+  font-family: 'Open Sans', sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 1.5em;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  font-size: 0.85em;
+}
+
+.strecher {
+  width: 100%;
+  height: 25px;
+  background-color: rgba(255, 48, 0, 1);
+  color: white;
+  font-size: 1.4em;
+  margin: 0;
+  padding: 0.7% 1%;
+}
+
+.projects .strecher {
+  background-color: rgba(4, 76, 160, 1);
+}
+
+.articles .strecher {
+  background-color: rgba(105, 185, 128, 1)
+}
+
+/**********************************
+TITLE PAGE
+***********************************/
+
+.blog img {}
+
+#wrapper1 {
+  margin: 25px auto;
+  width: 80%;
+  background: white;
+  border: 1px solid #eceff0
+  /*border-radius: 40px;*/
+}
+
+#wrapper1 img {
+  float: left;
+}
+
+#wrapper2 {
+  display: -webkit-flex;
+  margin: 0px 25px auto;
+  padding: 0px 20px 20px 20px;
+  width: 90%;
+  max-height: 500px;
+  border-top: 2px solid rgba(207, 207, 207, 0.9) ;
+  /*border-radius: 40px;*/
+/*  background: rgba(207, 207, 207, 0.7);*/
+}
+
+#wrapper2 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  clear: left;
+}
+
+.projects li,
+.articles li {
+  margin: 5% 2%;
+  border-bottom: 1px solid black;
+  font-style: italic;
+}
+
+.col {
+  margin: 0 2%;
+  padding: 2% 2% 2% 2%;
+  width: 100%;
+  /*border: 2px solid rgba(45,74,95,.9);*/
+  background: white;
+  -webkit-flex: 1;
+}
+
+.blog {
+  -webkit-flex: 2;
+}
+
+.written {
+}
+
+.projects {
+}
+
+.pres-list {
+  list-style-type: none;
+
+}
+
+
+#gallery {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 100%;
+}
+
+#gallery li {
+  float: left;
+  width: 45%;
+  margin: 2.5%;
+  background-color: #f5f5f5;
+  color: #bdc3c7;
+}
+
+#gallery li a p {
+  margin: 0;
+  padding: 5%;
+  font-size: 0.75em;
+  color: #bdc3c7
+}
+
+@media screen and (max-width: 800px){
+  #wrapper2 {
+    display: block;
+}

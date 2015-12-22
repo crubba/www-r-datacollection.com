@@ -1,0 +1,35 @@
+---
+layout: blog-index
+title: Blog
+group: "navigation"
+---
+
+
+<!-- <div class="container"> -->
+
+<!-- <div class="desc-title">//blog index</div> -->
+
+{% for post in paginator.posts %}
+
+	        <header>
+	        	<div class="teaser">
+	        		<a class="no-underline" href="{{ post.url }}"><h2> {{ post.title }} </h2></a>
+	        		<p>
+	        			<i>Posted by {{ post.blogo}}
+	        				<a class="blog-author" href="{{ post.authorref }}">{{ post.author }}</a> on <span class="blog-date">{{ post.date | date: "%B %d, %Y" }}</span>
+	        			</i>
+	        		</p>
+
+	        		{% for cat in page.categories %}
+	        		<span class="label label-default">{{ cat }}</span>
+	        		{% endfor %}
+	        		<div>
+	        		    <p style="text-align: justify;" class="">{{ post.content | remove: '<p>' | remove: '</p>' }}</p>
+	        		</div>   
+	        	</div>
+	        </header>
+
+{% endfor %}
+
+
+

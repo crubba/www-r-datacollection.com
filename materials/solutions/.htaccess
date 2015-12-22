@@ -1,0 +1,4 @@
+RewriteEngine on
+#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+# Ordnerbrowsing verbieten
+Options -Indexes

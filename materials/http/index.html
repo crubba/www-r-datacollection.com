@@ -1,0 +1,29 @@
+<html>
+ <head>
+  <title>List of Files</title>
+ </head>
+ <body>
+ <h3>HTTP tools</h3>
+<?php // list all files in directory excluding ".", ".." and files/folders without ending
+
+require('exec/listfiles.php');
+$files = listdir('.'); 
+sort($files, SORT_LOCALE_STRING); 
+
+foreach ($files as $file) { 
+     if (    $file != "." && $file != ".." 
+            &&  strpos($file,".") !== FALSE 
+            && $file != "index.html" 
+            && $file != ".htaccess"
+            && $file != "ToDo.txt"
+            && dirname($file) == "."
+           ) {
+            echo "<a href='$file'>$file</a><br>";
+        }
+} 
+
+
+?>
+
+ </body>
+</html>
