@@ -1,0 +1,106 @@
+
+{% include head.html %}
+
+
+<body>
+
+{% include navbar.html %}
+
+
+<div id="wrapper">
+
+<div id="main">	
+
+<div class="page-title">
+  <h1>Automated Data Collection with R Blog <a class="no-underline" href="/feed.xml"><i class="fa fa-rss"></i></a> </h1>
+</div>
+
+<div class="row">
+
+
+
+
+<!-- Content and Footer Column -->	
+<div class="components col-md-8">
+
+
+	<div id="wrapper">
+		<ul class="no-bullets">
+		    {% for post in site.posts limit 4 %}
+		    {% if post.blogo contains 'main' %}
+		    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a class="blog-title-index" href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+
+		    <p>{{ post.content | strip_html | truncatewords:75}} (<a href="{{ post.url }}">Read more</a>)<br><br></p>
+		     {% endif %}
+		    {% endfor %}
+		</ul>
+	</div>
+
+</div> <!-- end col-md-8 -->
+
+
+<!-- Smaller right-sided column -->
+<div class="col-md-4">
+
+<!-- Popluar Posts -->
+<div class="components blog-right-side">
+<h4 class="blog-h4 small-h4">Popular posts</h4>
+<div class="list-group">
+	<a href="/blog/Making-R-files-executable/" class="list-group-item disabled">Making R files executable</a>
+	<a href="/blog/Programming-a-Twitter-bot" class="list-group-item disabled">Programming a Twitter bot</a>
+	<a href="/blog/Fifty-years-of-Christmas-at-the-Windsors" class="list-group-item disabled">Fifty years of Christmas at Windsors</a>
+	<!-- a href="/blog/htmltab-Next-version-and-CRAN-release" class="list-group-item disabled">htmltab: Next version and CRAN release</a> -->
+<!-- 	  <a href="/blog/Welcome-to-the-ADCR-Blog" class="list-group-item disabled">Welcome to the ADCR Blog</a> -->
+
+<!-- 	  <a href="/blog/Welcome-to-the-ADCR-Blog" class="list-group-item disabled">Welcome to the ADCR Blog</a>
+	  <a href="/blog/Introduction-to-Public-Attention-Analytics-with-Wikipediatrend/" class="list-group-item disabled">Introduction to Public Attention Analytics with Wikipediatrend</a>
+	  <a href="/blog/The-ADCR-tombola/" class="list-group-item disabled">Win a harcover copy of ADCR</a>
+	  <a href="/blog/Hassle-free-HTML-tables-with-the-htmltable-package/" class="list-group-item disabled">Hassle-free HTML tables with the htmltable package</a> -->
+  </div>
+</div>
+
+<hr>
+
+<!-- Twitter -->
+<div class="components blog-right-side">
+<h4 class="blog-h4 small-h4">Twitter</h4>
+		{% include twitter.html %}
+</div>
+
+<hr>
+
+<!-- Blogroll -->
+<div class="components blog-right-side">
+<h4 class="blog-h4 small-h4">Blogroll</h4>
+<div class="list-group">
+	  <a href="http://www.r-datacollection.com/blog/" class="list-group-item disabled">Automated Data Collection with R Blog</a>
+	  <a href="http://www.r-bloggers.com" class="list-group-item disabled">R-Bloggers</a>
+	  <a href="http://blog.rstudio.org/" class="list-group-item disabled">RStudio Blog</a>
+	  <a href="http://www.r-statistics.com/" class="list-group-item disabled">R-statistics blog</a>
+  </div>
+</div>
+
+
+
+</div> <!-- end col-md-4 -->
+
+
+</div> <!-- end wrapper -->
+
+
+
+{% include footer.html  %}
+
+
+</div>
+</div>
+
+
+{% include piwik.html  %}
+</body>
+
+
+
+</html>
+
+
