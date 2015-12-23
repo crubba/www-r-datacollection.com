@@ -1,9 +1,9 @@
 ---
 layout: blog-layout
-title: "One Solution to the 'stringsAsFactors'-Problem <br>Or: Hell-Yeah there is HELLNO"
+title: "One Solution to the 'stringsAsFactors'-Problem Or: Hell-Yeah there is HELLNO"
 author: "Peter Meissner"
 authorref: "https://twitter.com/marvin_dpr"
-date: 2015-12-23 09:10:20
+date: 2015-12-23 11:10:20
 teaser-pic: "/img/blog/hellno100.png"
 category: rstats
 blogo: "main"
