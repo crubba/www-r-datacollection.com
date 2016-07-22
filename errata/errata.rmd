@@ -306,6 +306,17 @@ table(unlist(meta(short_corpus, "organisation")))
 
 
 
+# page 243 / 9.1.5.3
+
+*reported by Jane Yu*
+
+The installation of RHTMLForms package would fail - it's omgehat.net not omegahat.org. Use this instead ...
+
+```{r, eval=FALSE}
+install.packages("RHTMLForms", repos = "http://www.omegahat.net/R", type="source")
+```
+
+
 
 
 
