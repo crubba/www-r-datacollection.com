@@ -39,7 +39,7 @@ There are at least two solutions to the problem:
 ```{r, , label = 'p2a', cache = TRUE, eval = F}
 library(rvest) # the new package, version 0.3.0
 heritage_parsed <- read_html("http://en.wikipedia.org/wiki/List_of_World_Heritage_in_Danger", encoding = "UTF-8") # read_html() from the rvest package is the new htmlParse() from the XML package
-tables <- html_table(heritage_parsed, fill = TRUE) # html_table() from the revest package, which replaces readHTMLTable() from the XML package
+tables <- html_table(heritage_parsed, fill = TRUE) # html_table() from the rvest package, which replaces readHTMLTable() from the XML package
 ```
 
 From thereon, the rest of the chapter code should work. If you want to learn more about the rvest package, have a look [here](http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/). We are planning to cover it extensively in the next edition of our book.
