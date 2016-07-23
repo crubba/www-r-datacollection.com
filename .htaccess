@@ -1,4 +1,4 @@
-Options +FollowSymlinks -MultiViews
+Options +FollowSymlinks +MultiViews
 RewriteEngine on
 
 RewriteCond %{HTTP_HOST} !^www\. [NC]
@@ -14,3 +14,6 @@ RewriteRule . %1 [R=301,NE,L]
 AddHandler php5-cgi .html .htm
 
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+
+# Ordnerbrowsing verbieten
+Options -Indexes
