@@ -27,13 +27,6 @@ permalink: /blog/:title
 paginate: 7000
 paginate_path: "blog/page:num"
 
-# Custom vars
-# version:          1.0.0
-
-
-# port:		  4000
-
-# gems: [jekyll-sass]
 
 
 name: Automated Data Collection with R Blog
@@ -42,3 +35,4 @@ url: http://r-datacollection.com/blog
 
 
 exclude: [/materials/README.md, /materials/zip_materials.sh, /errata/*.md, /errata/*.rmd, /errata/*_example.*, /errata/cache]
+include: [/.htaccess]
