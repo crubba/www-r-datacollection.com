@@ -1,10 +1,10 @@
 ---
 output:
-  pdf_document: default
   html_document:
     highlight: pygments
     keep_md: yes
     theme: readable
+  pdf_document: default
 ---
 # Errata for 'Automated Data Collection with R'
 
@@ -53,6 +53,13 @@ From thereon, the rest of the chapter code should work. If you want to learn mor
 
 typo: change *"parsed_doc"* to *"parsed_fortunes$children"* 
 
+
+
+# page 96
+
+*Credit: Tobias Rosenberger (2017-03-14)*
+
+typo: *xmlParse("titles.xml")* should read *xmlParse("books.xml")*.
 
 
 # page 136

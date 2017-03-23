@@ -1,7 +1,7 @@
 # Errata for 'Automated Data Collection with R'
 
 
-Last update: 2015-10-08 10:33:05
+Last update: 2017-03-21 18:35:59
 
 
 ```r
@@ -14,13 +14,14 @@ library(rvest)
 
 # page 2
 
-*Credit: Suryapratim Sarkar (2015-06-25), Robert Godbey (2015-10-07)*
+*Credit: Suryapratim Sarkar (2015-06-25)*
 
 Wikipedia changed its server communication from HTTP to HTTPS. As a result, the following lines on page 2 return an error:
 
 
 ```r
-heritage_parsed <- htmlParse("http://en.wikipedia.org/wiki/List_of_World_Heritage_in_Danger", encoding = "UTF-8")
+heritage_parsed <- htmlParse("http://en.wikipedia.org/wiki/List_of_World_Heritage_in_Danger", 
+                             encoding = "UTF-8")
 ```
 
 ```
@@ -37,7 +38,7 @@ There are at least two solutions to the problem:
 ```r
 library(rvest) # the new package, version 0.3.0
 heritage_parsed <- read_html("http://en.wikipedia.org/wiki/List_of_World_Heritage_in_Danger", encoding = "UTF-8") # read_html() from the rvest package is the new htmlParse() from the XML package
-tables <- html_table(heritage_parsed, fill = TRUE) # html_table() from the revest package, which replaces readHTMLTable() from the XML package
+tables <- html_table(heritage_parsed, fill = TRUE) # html_table() from the rvest package, which replaces readHTMLTable() from the XML package
 ```
 
 From thereon, the rest of the chapter code should work. If you want to learn more about the rvest package, have a look [here](http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/). We are planning to cover it extensively in the next edition of our book.
@@ -51,6 +52,13 @@ From thereon, the rest of the chapter code should work. If you want to learn mor
 
 typo: change *"parsed_doc"* to *"parsed_fortunes$children"* 
 
+
+
+# page 96
+
+*Credit: Tobias Rosenberger (2017-03-14)*
+
+typo: *xmlParse("titles.xml")* should read *xmlParse("books.xml")*.
 
 
 # page 136
@@ -469,6 +477,18 @@ table(unlist(meta(short_corpus, "organisation")))
 ```
 
 
+
+
+# page 243 / 9.1.5.3
+
+*reported by Jane Yu*
+
+The installation of RHTMLForms package would fail - it's omgehat.net not omegahat.org. Use this instead ...
+
+
+```r
+install.packages("RHTMLForms", repos = "http://www.omegahat.net/R", type="source")
+```
 
 
 
